@@ -1,8 +1,10 @@
 "use client"
+import dynamic from "next/dynamic";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import React from "react";
-export default function Regestration_step2(){
+
+function Regestration_step2(){
     const [formData,setFormData]=React.useState({password:"",cpassword:""});
     const router=useRouter();
     function changeHandler(event:any){
@@ -27,12 +29,12 @@ export default function Regestration_step2(){
         }
         else{
             console.log(3);
-          router.push('/pages/dashboard');
+          router.push('/dashboard');
           toast.success("Regestered Succesfully");
         }
     }
     function prvHandler(){
-      router.push('/pages/regestration1');
+      router.push('/regestration2');
     }
     return <div className="bg-black text-slate-800 w-screen min-h-[1200px] ">
         <div className="
@@ -43,6 +45,7 @@ export default function Regestration_step2(){
         <div className="text-3xl text-center pt-4 pb-4 bg-blue-400">
             Regestration Step 2
         </div>
+        <div>
         <form className="flex flex-col gap-2 text-xl ml-10 mr-10">
             
             <label htmlFor="password">Password: </label>
@@ -67,6 +70,7 @@ export default function Regestration_step2(){
             onChange={changeHandler}
             />
         </form>
+        </div>
         <div className="flex justify-between text-xl">
               <button className="border-2 border-slate-400 p-[5px] mt-3 mb-3 
               rounded-lg w-[100px] mx-auto
@@ -84,3 +88,4 @@ export default function Regestration_step2(){
     
     </div>
 }
+export default dynamic (() => Promise.resolve(Regestration_step2), {ssr: false})

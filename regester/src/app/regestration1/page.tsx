@@ -1,7 +1,9 @@
 "use client"
+import dynamic from "next/dynamic";
 import React from "react";
 import { useRouter } from 'next/navigation';
-export default function Regestration(){
+
+function Regestration_step1(){
     const router = useRouter();
     const [formData,setFormData]=React.useState({firstName:"",middleName:"",
     lastName:"",email:""});
@@ -16,7 +18,7 @@ export default function Regestration(){
     }
     function submitHandler(event:any){
       event.preventDefault();
-      router.push('/pages/regestration2')
+      router.push('/regestration2')
      
     }
     return <div className="bg-black text-slate-800 w-screen min-h-[1200px] ">
@@ -28,6 +30,7 @@ export default function Regestration(){
         <div className="text-3xl text-center pt-4 pb-4 bg-blue-400">
             Regestration Step 1
         </div>
+        <div>
         <form className="flex flex-col gap-2 text-xl ml-10 mr-10 " onSubmit={submitHandler}>
             <label htmlFor="firstName">First Name: </label>
             <input 
@@ -74,5 +77,7 @@ export default function Regestration(){
             transtion duration-100 ease-in">Next</button>
         </form>
         </div>
+        </div>
     </div>
 }
+export default dynamic (() => Promise.resolve(Regestration_step1), {ssr: false})

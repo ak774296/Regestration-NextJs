@@ -1,7 +1,9 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { FaArrowRight } from "react-icons/fa";
-export default function Home() {
+import * as React from 'react';
+function Home() {
   
   return (
        <div className="flex flex-col">
@@ -10,7 +12,7 @@ export default function Home() {
         <div className="text-3xl text-white pt-6 leading-10">
             <span className="text-4xl font-bold">S</span>tudymitr
         </div>
-            <Link  href="/pages/regestration">
+            <Link  href="/regestration1">
                 <div
                 className="text-2xl  mt-6 border-2 border-slate-500 rounded-lg flex gap-2 justify-center
                  items-center p-3 hover:text-slate-400 transtion duration-200 ease-in"
@@ -19,7 +21,6 @@ export default function Home() {
         </div>
         
     </div>
-     
             <div>
             <p className="text-3xl text-center">
             Home
@@ -29,3 +30,4 @@ export default function Home() {
       </div>
   );
 }
+export default dynamic (() => Promise.resolve(Home), {ssr: false})
