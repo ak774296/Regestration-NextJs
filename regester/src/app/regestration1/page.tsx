@@ -57,6 +57,7 @@ function Regestration_step1(){
             placeholder="Enter your last name"
             type="text"
             name="lastName"
+            required
             value={formData.lastName}
             onChange={changeHandler}
             />
@@ -66,6 +67,7 @@ function Regestration_step1(){
             placeholder="Enter your email id"
             type="email"
             name="email"
+            required
             value={formData.email}
             onChange={changeHandler}
             />
